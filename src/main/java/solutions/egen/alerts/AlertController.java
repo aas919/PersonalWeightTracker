@@ -1,6 +1,6 @@
 package solutions.egen.controller;
 
-import solutions.egen.MorphiaContext;
+import solutions.egen.db.MorphiaContext;
 import solutions.egen.alerts.Alert;
 import solutions.egen.alerts.AlertDAO;
 import solutions.egen.metrics.Metric;
@@ -22,7 +22,7 @@ import java.util.List;
 public class AlertController {
 
     @Autowired
-    private AlertService alertService;
+    private AlertDAO alertDAO;
 
     @RequestMapping(value = "/read")
     public ResponseEntity<List<Alert>> read() {
@@ -38,7 +38,7 @@ public class AlertController {
     @RequestMapping(value = "/readRange/{timestampBegin}/{timestampEnd}")
     public ResponseEntity<List<Alert>> readByTimeRange(@PathVariable Long timestampBegin, @PathVariable Long timestampEnd) {
 
-        List<Alert> alertList = alertService.readByRange(timestampBegin, timestampEnd);
+        List<Alert> alertList = alertDAO.readByTimeRange(timestampBegin, timestampEnd);
 
         if (alertList.size() == 0)
             return new ResponseEntity<List<Alert>>(alertList, HttpStatus.NO_CONTENT);
