@@ -8,18 +8,18 @@ import org.mongodb.morphia.annotations.Property;
 @Entity("metrics")
 public class  Metric {
     @Id
-    private ObjectId metricId;
+    private ObjectId id;
     @Property("timestamp")
     private long timestamp;
     @Property("value")
     private int value;
 
-    public ObjectId getMetricId() {
-        return metricId;
+    public ObjectId getId() {
+        return id;
     }
 
-    public void setMetricId(ObjectId metricId) {
-        this.metricId = metricId;
+    public void setId(ObjectId metricId) {
+        this.id = id;
     }
 
     public long getTimestamp() {

@@ -30,8 +30,8 @@ public class AlertDAO {
 
     public List<Alert> readByTimeRange(long timestampBegin, long timestampEnd) {
         Query<Alert> query = datastore.createQuery(Alert.class)
-                .filter("timeStamp >=", timestampBegin)
-                .filter("timeStamp <=", timestampEnd);
+                .filter("timestamp >=", timestampBegin)
+                .filter("timestamp <=", timestampEnd);
         return query.asList();
     }
 }

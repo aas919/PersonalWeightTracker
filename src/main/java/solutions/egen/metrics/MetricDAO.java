@@ -1,4 +1,4 @@
-package solutions.egen.dao;
+package solutions.egen.metrics;
 
 import solutions.egen.db.MorphiaContext;
 import solutions.egen.metrics.Metric;
@@ -7,6 +7,7 @@ import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.query.*;
 import org.mongodb.morphia.Key;
 import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
@@ -30,8 +31,8 @@ public class MetricDAO {
 
     public List<Metric> readByTimeRange(long timestampBegin, long timestampEnd) {
         Query<Metric> query = datastore.createQuery(Metric.class)
-                .filter("timeStamp >=", timestampBegin)
-                .filter("timeStamp <=", timestampEnd);
+                .filter("timestamp >=", timestampBegin)
+                .filter("timestamp <=", timestampEnd);
         return query.asList();
     }
 }

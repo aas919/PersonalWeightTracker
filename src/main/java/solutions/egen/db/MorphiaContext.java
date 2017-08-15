@@ -6,24 +6,14 @@ import org.mongodb.morphia.Morphia;
 
 public class MorphiaContext {
 
-    private String packageName = "com.egen.model";
-
     private static MorphiaContext morphiaContext = new MorphiaContext();
 
-    final private Datastore datastore;
+    private Datastore datastore;
 
     public MorphiaContext() {
         Morphia morphia = new Morphia();
         datastore = morphia.createDatastore(new MongoClient(), "morphia_pwt");
         datastore.ensureIndexes();
-    }
-
-    public String getPackageName() {
-        return packageName;
-    }
-
-    public void setPackageName(String packageName) {
-        this.packageName = packageName;
     }
 
     public static MorphiaContext getMorphiaContext() {
